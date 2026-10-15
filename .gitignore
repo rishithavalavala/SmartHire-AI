@@ -1,0 +1,6 @@
+.env
+Credit-Card-Approval-Prediction/
+__pycache__/
+*.pyc
+.venv/
+venv/

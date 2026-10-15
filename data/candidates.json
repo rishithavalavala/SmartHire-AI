@@ -1,0 +1,119 @@
+[
+    {
+        "candidate_name": "Valavala Rishitha",
+        "target_role": "Associate Engineer",
+        "resume_score": "89.47",
+        "interview_score": 100.0,
+        "correct_count": 8,
+        "total_questions": 8,
+        "recommendation": "Good Fit",
+        "verdict": "The candidate performed well in the AI interview and is a strong fit for the role.",
+        "weak_skills": []
+    },
+    {
+        "candidate_name": "Valavala Rishitha",
+        "target_role": "Associate Engineer",
+        "resume_score": "89.47",
+        "interview_score": 100.0,
+        "correct_count": 8,
+        "total_questions": 8,
+        "recommendation": "Good Fit",
+        "verdict": "The candidate performed well in the AI interview and is a strong fit for the role.",
+        "weak_skills": []
+    },
+    {
+        "candidate_name": "abc",
+        "target_role": "full stack development",
+        "resume_score": "90.91",
+        "interview_score": 100.0,
+        "correct_count": 8,
+        "total_questions": 8,
+        "recommendation": "Good Fit",
+        "verdict": "The candidate performed well in the AI interview and is a strong fit for the role.",
+        "weak_skills": []
+    },
+    {
+        "candidate_name": "abc",
+        "target_role": "full stack development",
+        "resume_score": "90.91",
+        "interview_score": 100.0,
+        "correct_count": 8,
+        "total_questions": 8,
+        "recommendation": "Good Fit",
+        "verdict": "The candidate performed well in the AI interview and is a strong fit for the role.",
+        "weak_skills": []
+    },
+    {
+        "candidate_name": "priys",
+        "target_role": "full stack development",
+        "resume_score": "90.91",
+        "interview_score": 62.5,
+        "correct_count": 5,
+        "total_questions": 8,
+        "recommendation": "Moderate Fit",
+        "verdict": "The candidate has a decent foundation but needs improvement in some areas.",
+        "weak_skills": [
+            "Python",
+            "Django",
+            "Python Flask"
+        ]
+    },
+    {
+        "candidate_name": "Rishitha",
+        "target_role": "full stack development",
+        "resume_score": "100.0",
+        "interview_score": 62.5,
+        "correct_count": 5,
+        "total_questions": 8,
+        "recommendation": "Moderate Fit",
+        "verdict": "The candidate has a decent foundation but needs improvement in some areas.",
+        "weak_skills": [
+            "Database",
+            "React",
+            "JavaScript"
+        ]
+    },
+    {
+        "candidate_name": "Rishi",
+        "target_role": "Associate Engineer",
+        "resume_score": "72.73",
+        "interview_score": 75.0,
+        "correct_count": 6,
+        "total_questions": 8,
+        "recommendation": "Good Fit",
+        "verdict": "The candidate performed well in the AI interview and is a strong fit for the role.",
+        "weak_skills": [
+            "algorithms",
+            "git"
+        ]
+    },
+    {
+        "candidate_name": "Rishi",
+        "target_role": "Associate Engineer",
+        "resume_score": "76.92",
+        "interview_score": 62.5,
+        "correct_count": 5,
+        "total_questions": 8,
+        "recommendation": "Moderate Fit",
+        "verdict": "The candidate has a decent foundation but needs improvement in some areas.",
+        "weak_skills": [
+            "SQL",
+            "Git",
+            "Data Structures"
+        ]
+    },
+    {
+        "candidate_name": "Rishitha",
+        "target_role": "Associate software Engineer",
+        "resume_score": "88.24",
+        "interview_score": 75.0,
+        "correct_count": 6,
+        "total_questions": 8,
+        "recommendation": "Good Fit",
+        "verdict": "The candidate performed well in the AI interview and is a strong fit for the role.",
+        "weak_skills": [
+            "OOP",
+            "Java"
+        ]
+    }
+]

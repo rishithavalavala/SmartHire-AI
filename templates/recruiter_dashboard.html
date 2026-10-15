@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recruiter Dashboard - SmartHire AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #eef2ff, #f8fafc);
+            min-height: 100vh;
+        }
+
+        .page-wrapper {
+            padding: 40px 20px;
+        }
+
+        .header-card {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color:white;
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow: 0 16px 36px rgba(0,0,0,0.08);
+            margin-bottom: 28px;
+        }
+
+        .table-card {
+            background: white;
+            border-radius: 22px;
+            box-shadow: 0 14px 32px rgba(0,0,0,0.08);
+            padding: 24px;
+        }
+
+        .badge-good {
+            background: #dcfce7;
+            color: #166534;
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-weight: 700;
+        }
+
+        .badge-moderate {
+            background: #fef3c7;
+            color: #92400e;
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-weight: 700;
+        }
+
+        .badge-bad {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-weight: 700;
+        }
+
+        .skill-chip {
+            display: inline-block;
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 6px 12px;
+            border-radius: 999px;
+            margin: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .empty-box {
+            background: white;
+            border-radius: 22px;
+            box-shadow: 0 14px 32px rgba(0,0,0,0.08);
+            padding: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container page-wrapper">
+    <div class="header-card">
+        <h2 class="mb-2">Recruiter Dashboard</h2>
+        <p class="mb-0">View candidate performance, interview score, weak skills, and final recommendation.</p>
+    </div>
+
+    {% if candidates and candidates|length > 0 %}
+    <div class="table-card">
+        <div class="table-responsive">
+            <table class="table align-middle">
+                <thead>
+                    <tr>
+                        <th>Candidate</th>
+                        <th>Role</th>
+                        <th>Resume Match %</th>
+                        <th>Interview %</th>
+                        <th>Weak Skills</th>
+                        <th>Recommendation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in candidates %}
+                    <tr>
+                        <td>{{ c.candidate_name }}</td>
+                        <td>{{ c.target_role }}</td>
+                        <td>{{ c.resume_score }}</td>
+                        <td>{{ c.interview_score }}</td>
+                        <td>
+                            {% if c.weak_skills %}
+                                {% for skill in c.weak_skills %}
+                                    <span class="skill-chip">{{ skill }}</span>
+                                {% endfor %}
+                            {% else %}
+                                <span class="text-success fw-bold">No major gaps</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if c.recommendation == "Good Fit" %}
+                                <span class="badge-good">{{ c.recommendation }}</span>
+                            {% elif c.recommendation == "Moderate Fit" %}
+                                <span class="badge-moderate">{{ c.recommendation }}</span>
+                            {% else %}
+                                <span class="badge-bad">{{ c.recommendation }}</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% else %}
+    <div class="empty-box">
+        <h4>No candidate reports yet</h4>
+        <p class="text-muted mb-0">Once a candidate completes the SmartHire flow, their report will appear here.</p>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>

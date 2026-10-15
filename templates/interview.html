@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Interview - SmartHire AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #eef2ff, #f8fafc);
+            min-height: 100vh;
+        }
+
+        .page-wrapper {
+            padding: 40px 20px;
+        }
+
+        .header-card {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow: 0 16px 36px rgba(0,0,0,0.08);
+            margin-bottom: 24px;
+        }
+
+        .question-card {
+            background: white;
+            border-radius: 22px;
+            box-shadow: 0 14px 32px rgba(0,0,0,0.08);
+            padding: 24px;
+            margin-bottom: 22px;
+        }
+
+        .question-title {
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 18px;
+        }
+
+        .skill-badge {
+            display: inline-block;
+            background: #e0e7ff;
+            color: #3730a3;
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 14px;
+        }
+
+        .option-box {
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            padding: 12px 14px;
+            margin-bottom: 12px;
+            transition: 0.2s ease;
+            cursor: pointer;
+        }
+
+        .option-box:hover {
+            background: #f8fafc;
+            border-color: #6366f1;
+        }
+
+        .submit-card {
+            background: white;
+            border-radius: 22px;
+            box-shadow: 0 14px 32px rgba(0,0,0,0.08);
+            padding: 28px;
+            text-align: center;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #16a34a, #15803d);
+            border: none;
+            border-radius: 16px;
+            padding: 14px 28px;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .empty-box {
+            background: white;
+            border-radius: 22px;
+            box-shadow: 0 14px 32px rgba(0,0,0,0.08);
+            padding: 32px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container page-wrapper">
+    <div class="header-card">
+        <h2 class="mb-2">AI Interview Round</h2>
+        <p class="mb-1"><strong>Candidate:</strong> {{ candidate_name }}</p>
+        <p class="mb-0"><strong>Target Role:</strong> {{ target_role }}</p>
+    </div>
+
+    {% if questions and questions|length > 0 %}
+    <form action="/submit_interview" method="POST">
+        <input type="hidden" name="candidate_name" value="{{ candidate_name }}">
+        <input type="hidden" name="target_role" value="{{ target_role }}">
+        <input type="hidden" name="questions_json" value='{{ questions | tojson | safe }}'>
+        <input type="hidden" name="resume_score" value="{{ resume_score }}">
+
+        {% for q in questions %}
+            {% set q_index = loop.index0 %}
+            <div class="question-card">
+                <div class="skill-badge">{{ q.skill }}</div>
+                <h5 class="question-title">Q{{ loop.index }}. {{ q.question }}</h5>
+
+                {% for option in q.options %}
+                <label class="option-box d-block">
+                    <input type="radio" name="answer_{{ q_index }}" value="{{ option }}" required>
+                    <span class="ms-2">{{ option }}</span>
+                </label>
+                {% endfor %}
+            </div>
+        {% endfor %}
+
+        <div class="submit-card">
+            <h4 class="mb-3">Submit Your Interview</h4>
+            <button type="submit" class="btn btn-success btn-submit">Submit Interview</button>
+        </div>
+    </form>
+    {% else %}
+    <div class="empty-box">
+        <h4>No questions were generated</h4>
+        <p class="text-muted mb-0">
+            This means the AI question generator returned an empty result.
+        </p>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>

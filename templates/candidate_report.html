@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Report - SmartHire AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #f4f7fb;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .top-banner {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+        .score-card {
+            border: none;
+            border-radius: 18px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+        .report-card {
+            border: none;
+            border-radius: 18px;
+            box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+        }
+        .badge-score {
+            font-size: 0.95rem;
+            padding: 8px 14px;
+            border-radius: 12px;
+        }
+        .weak-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            border-radius: 14px;
+            padding: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container py-5">
+    <div class="top-banner mb-4">
+        <h2 class="fw-bold">Candidate Interview Report</h2>
+        <p class="mb-1"><strong>Candidate:</strong> {{ candidate_name }}</p>
+        <p class="mb-0"><strong>Target Role:</strong> {{ target_role }}</p>
+    </div>
+
+    <div class="row g-4 mb-4">
+        <div class="col-md-6">
+            <div class="card score-card p-4 text-center">
+                <h5 class="text-muted">Interview Score</h5>
+                <h1 class="fw-bold text-primary">{{ interview_score }}%</h1>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card score-card p-4 text-center">
+                <h5 class="text-muted">Overall Verdict</h5>
+                <h3 class="fw-bold text-success">{{ overall_verdict }}</h3>
+            </div>
+        </div>
+    </div>
+
+    <h4 class="fw-bold mb-3">Question-wise Evaluation</h4>
+
+    {% for item in question_results %}
+    <div class="card report-card p-4">
+        <h5 class="fw-bold">Question {{ loop.index }}</h5>
+        <p><strong>Question:</strong> {{ item.question }}</p>
+        <p><strong>Candidate Answer:</strong> {{ item.answer }}</p>
+
+        <p>
+            <strong>Score:</strong>
+            <span class="badge bg-primary badge-score">{{ item.score }}/10</span>
+        </p>
+
+        <p><strong>Feedback:</strong> {{ item.feedback }}</p>
+        <p><strong>Improvement Tip:</strong> {{ item.improvement }}</p>
+    </div>
+    {% endfor %}
+
+    <div class="mt-4">
+        <h4 class="fw-bold mb-3">Weak Areas</h4>
+        <div class="weak-box">
+            {% if weak_areas %}
+                <ul class="mb-0">
+                    {% for area in weak_areas %}
+                        <li>{{ area }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="mb-0">No major weak areas detected. Good job!</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
